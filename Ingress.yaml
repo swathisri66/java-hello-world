@@ -4,12 +4,12 @@ metadata:
   name: "java-hello-world-ingress"
   annotations:
     kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
   labels:
     app: java-hello-world
 spec:
   rules:
-    - host: java.example.com
-      http:
+    - http:
         paths:
           - path: /*
             backend:
