@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: java-hello-world
+spec:
+  serviceName: java-hello-world
+  replicas: 3
+  selector:
+    matchLabels:
+      app: java-hello-world
+  template:
+    metadata:
+      labels:
+        app: java-hello-world
+    spec:
+      containers:
+      - name: java-hello-world
+        image: 845555918361.dkr.ecr.us-west-2.amazonaws.com/java-hello-world:latest
+        ports:
+        - containerPort: 8080
+          name: web
