@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "java-hello-world-ingress"
+  annotations:
+    kubernetes.io/ingress.class: alb
+  labels:
+    app: java-hello-world
+spec:
+  rules:
+    - host: java.example.com
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: "java-hello-world"
+              servicePort: 8080
