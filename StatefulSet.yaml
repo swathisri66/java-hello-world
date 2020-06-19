@@ -19,3 +19,16 @@ spec:
         ports:
         - containerPort: 8080
           name: web
+        readinessProbe:
+          httpGet:
+            path: /docker-java-app/test
+            port: web
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+        livenessProbe:
+          tcpSocket:
+            port: web
+          initialDelaySeconds: 10
+          periodSeconds: 20
+          failureThreshold: 3
